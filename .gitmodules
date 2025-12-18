@@ -1,3 +1,6 @@
 [submodule "yeet"]
 	path = yeet
 	url = git@github.com:conditionull/my-yeet-config.git
+[submodule "waybar"]
+	path = waybar
+	url = git@github.com:conditionull/i-do-it-my-waybar.git
