@@ -1,0 +1,3 @@
+[submodule "yeet"]
+	path = yeet
+	url = git@github.com:conditionull/my-yeet-config.git
