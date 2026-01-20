@@ -4,3 +4,6 @@
 [submodule "waybar"]
 	path = waybar
 	url = git@github.com:conditionull/i-do-it-my-waybar.git
+[submodule "mako"]
+	path = mako
+	url = ../mako/
