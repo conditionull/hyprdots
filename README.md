@@ -7,3 +7,4 @@ For wallpaper management: Using "AWWW Switcher" from [vicinae](https://github.co
 > [!NOTE]
 > if you're using awww, disable hyprpaper. 
 
+
