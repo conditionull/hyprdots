@@ -23,8 +23,10 @@ Start a screen-recording with bind `SUPER+SHIFT+R` from hyprland.conf. It refere
 > The bind acts as a `toggle`; use it to start/stop the recording.<br /> Notifications are currently disabled since we'll be using an additional bash script to track the recording's duration via waybar module.
 
 > [!IMPORTANT]
-> Make sure the path for screen-record bind is correct<br />
+> Make sure the screen-record bind path is correct<br />
 > bind = $mainMod SHIFT, R, exec, YOUR/PATH/TO/selector.sh
+> Fix the path for waybar custom/recording_status module:
+> https://github.com/conditionull/i-do-it-my-waybar/blob/main/config <-- near the bottom of file
 
 If you want the screen-recording notifications to display from your notification daemon, uncomment the notify-send lines in the bash file. I prefer the waybar module, it looks cleaner and gives you a headsup that you're recording in case you forget!
 
