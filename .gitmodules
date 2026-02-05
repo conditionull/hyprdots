@@ -7,3 +7,6 @@
 [submodule "mako"]
 	path = mako
 	url = ../mako/
+[submodule "screen-rec-selector"]
+	path = screen-rec-selector
+	url = https://github.com/conditionull/screen-rec-selector
