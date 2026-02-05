@@ -24,7 +24,7 @@ Start a screen-recording with bind `SUPER+SHIFT+R` from hyprland.conf. It refere
 
 > [!IMPORTANT]
 > `Fix` the screen-record bind path<br />
-> bin`d = $mainMod SHIFT, R, exec, YOUR/PATH/TO/selector.sh<br />
+> bind = $mainMod SHIFT, R, exec, YOUR/PATH/TO/selector.sh<br />
 > `Fix` the waybar custom/recording_status module path:
 > https://github.com/conditionull/i-do-it-my-waybar/blob/main/config <-- near the bottom of file
 
