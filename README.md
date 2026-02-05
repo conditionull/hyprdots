@@ -22,16 +22,24 @@ Start a screen-recording with bind `SUPER+SHIFT+R` from hyprland.conf. It refere
 > [!NOTE]
 > The bind acts as a `toggle`; use it to start/stop the recording.<br /> Notifications are currently disabled since we'll be using an additional bash script to track the recording's duration via waybar module.
 
+> [!IMPORTANT]
+> Make sure the path for screen-record bind is correct<br />
+> bind = $mainMod SHIFT, R, exec, YOUR/PATH/TO/selector.sh
+
 If you want the screen-recording notifications to display from your notification daemon, uncomment the notify-send lines in the bash file. I prefer the waybar module, it looks cleaner and gives you a headsup that you're recording in case you forget!
 
 waybar recording_status module:<br />
-![recording_status module](/docs/images/image-4.png)<br />
+<img width="338" height="54" alt="image-4" src="https://github.com/user-attachments/assets/f59871f2-08ad-4038-a13e-50170b624ed6" />
+
 <details>
     <summary>screen-rec-selector previews (click to view)</summary>
 
-![alt text](/docs/images/image-8.png)
-![alt text](/docs/images/image-9.png)
+<img width="793" height="532" alt="image-8" src="https://github.com/user-attachments/assets/20f714b3-4107-4a21-ad2b-d2ce169b50a3" />
+<img width="751" height="502" alt="image-9" src="https://github.com/user-attachments/assets/d17d682f-b3b3-46ca-83d3-079e8191e52a" />
 </details>
-<video controls src="/home/doccia/.config/hypr/docs/videos/2026-02-04_20-39-48.mp4" title="preview"></video>
+<br />
+
+https://github.com/user-attachments/assets/0e284343-66a8-4124-9945-db808b29084f
+
 
 Using your own dots? Follow the README instructions [here](https://github.com/conditionull/screen-rec-selector)
