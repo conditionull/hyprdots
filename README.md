@@ -50,5 +50,6 @@ waybar recording_status module:<br />
 
 https://github.com/user-attachments/assets/0e284343-66a8-4124-9945-db808b29084f
 
+(YT link if mp4 fails: https://youtu.be/187pir6Y8ek)
 
 Using your own dots? Follow the README instructions [here](https://github.com/conditionull/screen-rec-selector) to implement it yourself
