@@ -73,7 +73,7 @@ hl.workspace_rule({ workspace = "8", monitor = rightMonitor })
 -------------------
 ---- AUTOSTART ----
 -------------------
-hl.on("hyprland.start", function ()
+hl.on("hyprland.start", function()
   hl.exec_cmd("waybar -c ~/.config/waybar/config_dock -s ~/.config/waybar/dock.css")
   hl.exec_cmd("awww-daemon & mako & vicinae server")
   hl.exec_cmd("systemctl --user start hyprpolkitagent")
@@ -152,9 +152,50 @@ hl.layer_rule({
   ignore_alpha = 0,
 })
 
+hl.layer_rule({
+  match = { namespace = "vicinae" },
+  name = "vicinae-no-animation",
+  no_anim = true,
+})
+
 -- Default curves and animations, see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Animations/
+-- curves
 hl.curve( "rubber", { type = "spring", mass = 1, stiffness = 70, dampening = 10 } )
+hl.curve("workspace_rubber", {
+  type = "spring",
+  mass = 1,
+  stiffness = 130,
+  dampening = 16,
+})
+hl.curve("close_smooth", {
+  type = "spring",
+  mass = 1,
+  stiffness = 90,
+  dampening = 20,
+})
+-- animations
 hl.animation({ leaf = "windows", enabled = true, speed = 5, spring = "rubber", style = "popin 80%" })
+hl.animation({
+  leaf = "windowsOut",
+  enabled = true,
+  speed = 4,
+  spring = "close_smooth",
+  style = "popin 0%",
+})
+hl.animation({
+  leaf = "fadeOut",
+  enabled = true,
+  speed = 4,
+  bezier = "default",
+})
+hl.animation({
+  leaf = "workspaces",
+  enabled = true,
+  speed = 5,
+  spring = "workspace_rubber",
+  style = "slidefade 20%",
+})
+
 
 ---------------------
 ---- KEYBINDINGS ----
