@@ -297,6 +297,9 @@ hl.bind(mainMod .. " + CTRL + SHIFT + P",      hl.dsp.exec_cmd("poweroff"))
 -- Screenshot
 hl.bind(mainMod .. " + SHIFT + S",             hl.dsp.exec_cmd('bash -c \'dir=~/Screenshots; mkdir -p "$dir"; area=$(slurp); [ -n "$area" ] && grim -g "$area" - | tee "$dir/$(date +%Y-%m-%d_%H-%M-%S).png" | wl-copy && notify-send -t 1400 "Screenshot copied to clipboard"\''))
 
+-- Wallpaper blur application
+hl.bind(mainMod .. " + SHIFT + A",             hl.dsp.exec_cmd("kitty --class wallpaper-blur-menu -o background=#1a151a -e ~/.config/hypr/scripts/blur-wallpaper-menu.sh"))
+
 -- Color picker
 hl.bind(mainMod .. " + SHIFT + P",             hl.dsp.exec_cmd("~/.config/hypr/scripts/hyprpicker.sh"))
 
@@ -349,6 +352,49 @@ hl.window_rule({
     "cursor_y-(" .. floatingKittyH .. "*0.5)",
   },
 })
+
+
+---- Wallpaper blur application ----
+-- Gradient border rotation curve
+hl.curve("linear", {
+    type = "bezier",
+    points = {
+        { 0.0, 0.0 },
+        { 1.0, 1.0 },
+    },
+})
+
+-- Animate gradient border angle
+hl.animation({
+    leaf = "borderangle",
+    enabled = true,
+    speed = 80,
+    bezier = "linear",
+    style = "loop",
+})
+hl.window_rule({
+    match = { class = "wallpaper-blur-menu" },
+
+    float = true,
+    center = true,
+    size = { 700, 500 },
+    opacity = 1,
+
+    rounding = 14,
+    border_size = 2,
+
+    border_color = {
+        colors = {
+            "rgba(ff4fd8ff)",
+            "rgba(ffffffff)",
+            "rgba(ffb3f5ff)",
+            "rgba(ffffffff)",
+            "rgba(ff4fd8ff)",
+        },
+        angle = 45,
+    },
+})
+------------------------------------
 
 -- General app float/size/center rules
 hl.window_rule({ match = { initial_class = "it.mijorus.gearlever" },          float = true, size = { 840, 540 } })

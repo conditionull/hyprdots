@@ -19,8 +19,8 @@ local function shape_window(opts)
     return false
   end
 
-  -- Focus the target first.
-  -- Move/resize are most reliable when applied to the active window.
+  -- focus the target first
+  -- move/resize are most reliable when applied to the active window
   hl.dispatch(hl.dsp.focus({
     window = target,
   }))
