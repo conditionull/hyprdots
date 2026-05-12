@@ -156,7 +156,7 @@ hl.layer_rule({
 hl.layer_rule({
   match = { namespace = "vicinae" },
   name = "vicinae-no-animation",
-  no_anim = true,
+  no_anim = false,
 })
 
 hl.layer_rule({
@@ -369,7 +369,7 @@ hl.bind(mainMod .. " + CTRL + SHIFT + K",      hl.dsp.exec_cmd("pkill -x wayvibe
 
 -- Soundboard
 hl.bind(mainMod .. " + SHIFT + D",             hl.dsp.exec_cmd("mpv --volume=75 --no-video --keep-open=no --audio-device=pulse/SOUNDBOARDSINK ~/Downloads/cinematicboom.mp3"))
-hl.bind(mainMod .. " + SHIFT + G",             hl.dsp.exec_cmd("mpv --volume=40 --no-video --keep-open=no --audio-device=pulse/SOUNDBOARDSINK ~/Downloads/vine-boom.mp3"))
+hl.bind(mainMod .. " + SHIFT + G",             hl.dsp.exec_cmd("mpv --volume=45 --no-video --keep-open=no --audio-device=pulse/SOUNDBOARDSINK ~/Downloads/vine-boom.mp3"))
 
 -- Quick access (config files)
 hl.bind(mainMod .. " + H",                     hl.dsp.exec_cmd(terminal .. " nvim ~/.config/hypr/hyprland.lua"))
