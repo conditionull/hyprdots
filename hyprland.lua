@@ -224,7 +224,9 @@ hl.bind(mainMod .. " + SHIFT + T", function()
     size = { 570, 500 },
     move = { 3195, 214 },
 
-    delay = 1000,
+    delay = 250,     -- start checking after 0.25 seconds
+    attempts = 10,   -- try up to 10 times
+    interval = 250,  -- wait 0.25 seconds between tries
   })
 end)
 
