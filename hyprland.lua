@@ -159,6 +159,23 @@ hl.layer_rule({
   no_anim = true,
 })
 
+
+----------------------------
+---- MAKO NOTIFICATIONS ----
+----------------------------
+hl.animation({
+  leaf = "layers",
+  enabled = true,
+  speed = 5,
+  spring = "rubber",
+  style = "slide right",
+})
+
+hl.layer_rule({
+  match = { namespace = "notifications" },
+  animation = "slide right",
+})
+
 -- Default curves and animations, see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Animations/
 -- curves
 hl.curve( "rubber", { type = "spring", mass = 1, stiffness = 70, dampening = 10 } )
