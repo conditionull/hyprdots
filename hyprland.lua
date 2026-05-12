@@ -16,7 +16,7 @@ hl.env("XCURSOR_SIZE", "40")
 -------------------
 ---- FUNCTIONS ----
 -------------------
-local actions = require("actions")
+local open_shape = require("modules.open_shape")
 local ok, private = pcall(require, "private")
 if not ok then
   private = {}
@@ -39,14 +39,15 @@ local leftMonitor = "DP-3"
 local rightMonitor = "DP-1"
 local floatingKittyW = 900
 local floatingKittyH = 560
+
+
+-------------------------
+---- OTHER VARIABLES ----
+-------------------------
 local twitch_name = private.twitch_name or ""
 local twitch_uuid = private.twitch_uuid or ""
-local twitch_activity_url =
-  "https://dashboard.twitch.tv/popout/u/"
-  .. twitch_name
-  .. "/stream-manager/activity-feed?uuid="
-  .. twitch_uuid
-
+local twitch_activity_url ="https://dashboard.twitch.tv/popout/u/"
+  .. twitch_name .. "/stream-manager/activity-feed?uuid=" .. twitch_uuid
 
 ------------------
 ---- MONITORS ----
@@ -216,23 +217,44 @@ hl.bind(mainMod .. " + Y",               hl.dsp.exec_cmd("firefox --new-tab http
 hl.bind(mainMod .. " + T",               hl.dsp.exec_cmd("firefox --new-tab https://www.twitch.tv/"))
 
 hl.bind(mainMod .. " + SHIFT + T", function()
-  actions.spawn_and_shape({
+  open_shape.open({
     cmd = "firefox --new-window '" .. twitch_activity_url .. "'",
 
     window = "title:.*Activity Feed - Twitch.*",
-
+    float = true,
     size = { 570, 500 },
     move = { 3195, 214 },
 
-    delay = 250,     -- start checking after 0.25 seconds
-    attempts = 10,   -- try up to 10 times
-    interval = 250,  -- wait 0.25 seconds between tries
+    interval = 250,
+    attempts = 10,
+  })
+  
+  open_shape.open({
+    cmd = "firefox --new-window '" .. "www.twitch.tv/popout/" .. twitch_name ..  "/chat?popout=" .. "'",
+
+    window = "title:.*" .. twitch_name .. " - Chat - Twitch.*",
+    float = true,
+    size = { 500, 680 },
+    move = { 1931, 389 },
+
+    interval = 250,
+    attempts = 10,
   })
 end)
 
-hl.bind(mainMod .. " + SHIFT + J", hl.dsp.exec_cmd(
-  "google-chrome-stable --new-window https://sayonari.github.io/jimakuChan"
-))
+hl.bind(mainMod .. " + SHIFT + J", function()
+  open_shape.open({
+    cmd = "google-chrome-stable --new-window https://sayonari.github.io/jimakuChan",
+
+    window = "title:.*jimakuChan.*",
+    float = true,
+    size = { 935, 296 },
+    move = { 2895, 46 },
+
+    interval = 250,
+    attempts = 10,
+  })
+end)
 
 hl.bind(mainMod .. " + G",               hl.dsp.exec_cmd("firefox --new-tab https://www.github.com/"))
 
@@ -469,10 +491,4 @@ hl.window_rule({ match = { class = "streamer.bot.exe", title = "Add Action" }, f
 hl.window_rule({ match = { initial_class = "org.telegram.desktop" },                                 float = true, size = { 635, 802 } })
 hl.window_rule({ match = { initial_class = "org.telegram.desktop", initial_title = "Media viewer" }, float = true, size = { 850, 850 } })
 hl.window_rule({ match = { initial_class = "org.telegram.desktop", initial_title = "Save Image" },   float = true, center = true, size = { 750, 550 } })
-
--- Chatterino
-hl.window_rule({ match = { class = "com.chatterino.chatterino" }, float = true, size = { 390, 610 }, move = { 1970, 390 } })
-
--- jimakuChan Translation
-hl.window_rule({ match = { initial_title = ".*jimakuChan.*" }, float = true, size = { 935, 296 }, move = { 2895, 46 } })
 
