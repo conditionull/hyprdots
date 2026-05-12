@@ -159,6 +159,15 @@ hl.layer_rule({
   no_anim = true,
 })
 
+hl.layer_rule({
+  match = { namespace = "selection" },
+  no_anim = true,
+})
+
+hl.layer_rule({
+  match = { namespace = "hyprpicker" },
+  no_anim = true,
+})
 
 ----------------------------
 ---- MAKO NOTIFICATIONS ----
