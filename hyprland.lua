@@ -169,25 +169,9 @@ hl.layer_rule({
   no_anim = true,
 })
 
-----------------------------
----- MAKO NOTIFICATIONS ----
-----------------------------
-hl.animation({
-  leaf = "layers",
-  enabled = true,
-  speed = 5,
-  spring = "rubber",
-  style = "slide right",
-})
 
-hl.layer_rule({
-  match = { namespace = "notifications" },
-  animation = "slide right",
-})
-
--- Default curves and animations, see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Animations/
 -- curves
-hl.curve( "rubber", { type = "spring", mass = 1, stiffness = 70, dampening = 10 } )
+hl.curve( "rubber", { type = "spring", mass = 1, stiffness = 60, dampening = 10 } )
 hl.curve("workspace_rubber", {
   type = "spring",
   mass = 1,
@@ -200,6 +184,7 @@ hl.curve("close_smooth", {
   stiffness = 90,
   dampening = 20,
 })
+
 -- animations
 hl.animation({ leaf = "windows", enabled = true, speed = 5, spring = "rubber", style = "popin 80%" })
 hl.animation({
@@ -221,6 +206,18 @@ hl.animation({
   speed = 5,
   spring = "workspace_rubber",
   style = "slidefade 20%",
+})
+hl.animation({
+  leaf = "layers",
+  enabled = true,
+  speed = 5,
+  spring = "rubber",
+  style = "slide right",
+})
+
+hl.layer_rule({
+  match = { namespace = "notifications" },
+  animation = "slide right",
 })
 
 
