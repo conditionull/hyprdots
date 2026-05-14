@@ -1,5 +1,9 @@
 ## open_shape.lua usage
 
+Use this helper when Hyprland's built-in command rules are too flaky for browser windows that open late, come from an already-running browser, or update their class/title after opening.
+
+My use cases: Browser created windows from firefox/chrome into specific sizes and positions. Traditional binds with windowrules did not work for these cases.
+
 `open_shape` opens a command, waits for the new window, then shapes it. You can float it, resize it, move it, tag it, or send it to another workspace.
 
 ### Rules
