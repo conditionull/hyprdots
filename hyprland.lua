@@ -243,39 +243,31 @@ hl.bind(mainMod .. " + SHIFT + T", function()
   open_shape.open({
     cmd = "firefox --new-window '" .. twitch_activity_url .. "'",
 
-    window = "title:.*Activity Feed - Twitch.*",
-    float = true,
+    class = "firefox",
+    title = "Activity Feed %- Twitch",
+
     size = { 570, 500 },
     move = { 3195, 214 },
-
-    interval = 250,
-    attempts = 10,
   })
-  
-  open_shape.open({
-    cmd = "firefox --new-window '" .. "www.twitch.tv/popout/" .. twitch_name ..  "/chat?popout=" .. "'",
 
-    window = "title:.*" .. twitch_name .. " - Chat - Twitch.*",
-    float = true,
+  open_shape.open({
+    cmd = "firefox --new-window '" .. "www.twitch.tv/popout/" .. twitch_name .. "/chat?popout=" .. "'",
+
+    class = "firefox",
+    title = twitch_name .. " %- Chat %- Twitch",
+
     size = { 500, 680 },
     move = { 1931, 389 },
-
-    interval = 250,
-    attempts = 10,
   })
-end)
 
-hl.bind(mainMod .. " + SHIFT + J", function()
   open_shape.open({
     cmd = "google-chrome-stable --new-window https://sayonari.github.io/jimakuChan",
 
-    window = "title:.*jimakuChan.*",
-    float = true,
+    class = "google-chrome",
+    title = "jimakuChan",
+    
     size = { 935, 296 },
     move = { 2895, 46 },
-
-    interval = 250,
-    attempts = 10,
   })
 end)
 
