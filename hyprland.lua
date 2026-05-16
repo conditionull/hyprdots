@@ -274,7 +274,7 @@ end)
 hl.bind(mainMod .. " + G",               hl.dsp.exec_cmd("firefox --new-tab https://www.github.com/"))
 
 -- Waybar
-hl.bind(mainMod .. " + W",               hl.dsp.exec_cmd("waybar -c ~/.config/waybar/config_dock -s ~/.config/waybar/dock.css"))
+hl.bind(mainMod .. " + W",               hl.dsp.exec_cmd("waybar -c ~/.config/waybar/config_dock.jsonc -s ~/.config/waybar/dock.css"))
 hl.bind(mainMod .. " + SHIFT + W",       hl.dsp.exec_cmd("pkill -x waybar"))
 hl.bind(mainMod .. " + SHIFT + B",       hl.dsp.exec_cmd("~/.config/waybar/scripts/waybar-selector.sh"))
 
@@ -486,6 +486,9 @@ hl.window_rule({ match = { initial_class = "blender", title = "Preferences" }, f
 hl.window_rule({ match = { initial_class = "org.multimc.MultiMC" },             float = true, center = true, size = { 845, 645 } })
 hl.window_rule({ match = { initial_class = "org.prismlauncher.PrismLauncher" }, float = true, center = true, size = { 845, 645 } })
 hl.window_rule({ match = { initial_class = "Minecraft.*" },                     monitor = leftMonitor })
+
+-- Code
+hl.window_rule({ match = { initial_class = "code-oss" },                        maximize = true })
 
 -- Steam
 hl.window_rule({ match = { initial_class = "steam_app_.*" },                                monitor = leftMonitor, fullscreen = true })
