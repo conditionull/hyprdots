@@ -76,7 +76,7 @@ hl.workspace_rule({ workspace = "8", monitor = rightMonitor })
 -------------------
 hl.on("hyprland.start", function()
   hl.exec_cmd("waybar -c ~/.config/waybar/config_dock -s ~/.config/waybar/dock.css")
-  hl.exec_cmd("awww-daemon & mako & vicinae server")
+  hl.exec_cmd("awww-daemon & mako & vicinae server & steam")
   hl.exec_cmd("systemctl --user start hyprpolkitagent")
 
   hl.exec_cmd("systemctl --user enable --now wayscriber.service")
@@ -357,8 +357,12 @@ hl.bind(mainMod .. " + SHIFT + K",             hl.dsp.exec_cmd("wayvibes ~/works
 hl.bind(mainMod .. " + CTRL + SHIFT + K",      hl.dsp.exec_cmd("pkill -x wayvibes"))
 
 -- Soundboard
-hl.bind(mainMod .. " + SHIFT + D",             hl.dsp.exec_cmd("mpv --volume=75 --no-video --keep-open=no --audio-device=pulse/SOUNDBOARDSINK ~/Downloads/cinematicboom.mp3"))
-hl.bind(mainMod .. " + SHIFT + G",             hl.dsp.exec_cmd("mpv --volume=45 --no-video --keep-open=no --audio-device=pulse/SOUNDBOARDSINK ~/Downloads/vine-boom.mp3"))
+hl.bind(mainMod .. " + SHIFT + D",
+  hl.dsp.exec_cmd("pw-play --target SOUNDBOARDSINK ~/Downloads/cinematicboom.mp3")
+)
+hl.bind(mainMod .. " + SHIFT + G",
+  hl.dsp.exec_cmd("pw-play --volume 0.2 --target SOUNDBOARDSINK ~/Downloads/vine-boom.mp3")
+)
 
 -- Quick access (config files)
 hl.bind(mainMod .. " + H",                     hl.dsp.exec_cmd(terminal .. " nvim ~/.config/hypr/hyprland.lua"))
@@ -484,7 +488,7 @@ hl.window_rule({ match = { initial_class = "org.prismlauncher.PrismLauncher" }, 
 hl.window_rule({ match = { initial_class = "Minecraft.*" },                     monitor = leftMonitor })
 
 -- Steam
-hl.window_rule({ match = { initial_class = "steam_app_.*" },                                monitor = leftMonitor })
+hl.window_rule({ match = { initial_class = "steam_app_.*" },                                monitor = leftMonitor, fullscreen = true })
 hl.window_rule({ match = { initial_title = "VTube Studio" },                                monitor = rightMonitor, workspace = "5 silent", fullscreen = true })
 hl.window_rule({ match = { initial_title = "Steam",          initial_class = "steam" },     tile = true })
 hl.window_rule({ match = { initial_title = "Steam Settings", initial_class = "steam" },     float = true, center = true })
