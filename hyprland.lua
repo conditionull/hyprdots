@@ -511,3 +511,20 @@ hl.window_rule({ match = { initial_class = "org.telegram.desktop" },            
 hl.window_rule({ match = { initial_class = "org.telegram.desktop", initial_title = "Media viewer" }, float = true, size = { 850, 850 } })
 hl.window_rule({ match = { initial_class = "org.telegram.desktop", initial_title = "Save Image" },   float = true, center = true, size = { 750, 550 } })
 
+
+--------------------
+---- Lua stuffs ----
+--------------------
+hl.on("window.open", function(w)
+  if w.class ~= "steam_app_688130" then return end
+
+  local windows = hl.get_windows()
+  for _, win in ipairs(windows) do
+    if win.class == "com.obsproject.Studio" then
+      hl.timer(function()
+        hl.exec_cmd("~/.config/hypr/scripts/pogo-sink-switch.sh")
+      end, { timeout = 10000, type = "oneshot" })
+      return
+    end
+  end
+end)
