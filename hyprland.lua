@@ -76,7 +76,7 @@ hl.workspace_rule({ workspace = "8", monitor = rightMonitor })
 -------------------
 hl.on("hyprland.start", function()
   hl.exec_cmd("waybar -c ~/.config/waybar/config_dock.jsonc -s ~/.config/waybar/dock.css")
-  hl.exec_cmd("awww-daemon & mako & vicinae server & steam")
+  hl.exec_cmd("awww-daemon & mako & vicinae server")
   hl.exec_cmd("systemctl --user start hyprpolkitagent")
 
   hl.exec_cmd("systemctl --user enable --now wayscriber.service")
