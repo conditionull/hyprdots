@@ -16,7 +16,6 @@ hl.env("XCURSOR_SIZE", "40")
 -------------------
 ---- FUNCTIONS ----
 -------------------
-local open_shape = require("modules.open_shape")
 local ok, private = pcall(require, "private")
 if not ok then
   private = {}
@@ -239,38 +238,6 @@ hl.bind(mainMod .. " + D",               hl.dsp.exec_cmd("wayscriber --daemon-to
 hl.bind(mainMod .. " + Y",               hl.dsp.exec_cmd("firefox --new-tab https://www.youtube.com/"))
 hl.bind(mainMod .. " + T",               hl.dsp.exec_cmd("firefox --new-tab https://www.twitch.tv/"))
 
-hl.bind(mainMod .. " + SHIFT + T", function()
-  open_shape.open({
-    cmd = "firefox --new-window '" .. twitch_activity_url .. "'",
-
-    class = "firefox",
-    title = "Activity Feed %- Twitch",
-
-    size = { 570, 500 },
-    move = { 3195, 214 },
-  })
-
-  open_shape.open({
-    cmd = "firefox --new-window '" .. "www.twitch.tv/popout/" .. twitch_name .. "/chat?popout=" .. "'",
-
-    class = "firefox",
-    title = twitch_name .. " %- Chat %- Twitch",
-
-    size = { 500, 680 },
-    move = { 1931, 389 },
-  })
-
-  open_shape.open({
-    cmd = "google-chrome-stable --new-window https://sayonari.github.io/jimakuChan",
-
-    class = "google-chrome",
-    title = "jimakuChan",
-    
-    size = { 935, 296 },
-    move = { 2895, 46 },
-  })
-end)
-
 hl.bind(mainMod .. " + G",               hl.dsp.exec_cmd("firefox --new-tab https://www.github.com/"))
 
 -- Waybar
@@ -358,7 +325,7 @@ hl.bind(mainMod .. " + CTRL + SHIFT + K",      hl.dsp.exec_cmd("pkill -x wayvibe
 
 -- Soundboard
 hl.bind(mainMod .. " + SHIFT + D",
-  hl.dsp.exec_cmd("pw-play --target SOUNDBOARDSINK ~/Downloads/cinematicboom.mp3")
+  hl.dsp.exec_cmd("pw-play --volume 0.7 --target SOUNDBOARDSINK ~/Downloads/cinematicboom.mp3")
 )
 hl.bind(mainMod .. " + SHIFT + G",
   hl.dsp.exec_cmd("pw-play --volume 0.2 --target SOUNDBOARDSINK ~/Downloads/vine-boom.mp3")
@@ -476,7 +443,7 @@ hl.window_rule({ match = { initial_class = "xdg-desktop-portal-gtk", initial_tit
 hl.window_rule({ match = { initial_class = "xdg-desktop-portal-gtk", initial_title = "Pick game to add" },  float = true, center = true, size = { 800, 600 } })
 
 -- Firefox
-hl.window_rule({ match = { initial_class = "firefox", initial_title = "Picture-in-Picture" }, float = true, size = { 680, 382 } })
+hl.window_rule({ match = { initial_class = "firefox", initial_title = "Picture-in-Picture" }, float = true, size = { 680, 382 }, move = { 1235, 4 } })
 hl.window_rule({ match = { initial_class = "firefox", initial_title = "Library" },            float = true, center = true, size = { 910, 910 } })
 
 -- Blender
