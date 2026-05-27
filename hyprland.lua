@@ -332,8 +332,10 @@ hl.bind(mainMod .. " + SHIFT + G",
 )
 
 -- Quick access (config files)
-hl.bind(mainMod .. " + H",                     hl.dsp.exec_cmd(terminal .. " nvim ~/.config/hypr/hyprland.lua"))
+hl.bind(mainMod .. " + H",                     hl.dsp.exec_cmd("code ~/.config/hypr/"))
 hl.bind(mainMod .. " + N",                     hl.dsp.exec_cmd(terminal .. " nvim ~/.config/nvim/init.lua"))
+hl.bind(mainMod .. " + J",                     hl.dsp.exec_cmd("code ~/.config/waybar/"))
+hl.bind(mainMod .. " + SHIFT + J",             hl.dsp.exec_cmd(terminal .. " --directory ~/.config/waybar/"))
 hl.bind(mainMod .. " + SHIFT + H",             hl.dsp.exec_cmd(terminal .. " --directory ~/.config/hypr/"))
 hl.bind(mainMod .. " + SHIFT + N",             hl.dsp.exec_cmd(terminal .. " --directory ~/.config/nvim/"))
 
