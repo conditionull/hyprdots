@@ -8,10 +8,10 @@ hl.env("NVD_BACKEND", "direct")
 hl.env("AQ_FORCE_LINEAR_BLIT", "0")
 hl.env("GTK_THEME", "Fluent-Dark-compact")
 
-hl.env("HYPRCURSOR_THEME", "AC-Future")
-hl.env("XCURSOR_THEME", "AC-Future")
-hl.env("HYPRCURSOR_SIZE", "40")
-hl.env("XCURSOR_SIZE", "40")
+hl.env("HYPRCURSOR_THEME", "Kitty")
+hl.env("XCURSOR_THEME", "Kitty")
+hl.env("HYPRCURSOR_SIZE", "24")
+hl.env("XCURSOR_SIZE", "24")
 
 -------------------
 ---- FUNCTIONS ----
@@ -323,14 +323,6 @@ hl.bind("XF86AudioPrev",                       hl.dsp.exec_cmd("playerctl previo
 hl.bind(mainMod .. " + SHIFT + K",             hl.dsp.exec_cmd("wayvibes ~/workspace/github/public/wayvibes/soundpacks/nk-cream/ -v 0.8"))
 hl.bind(mainMod .. " + CTRL + SHIFT + K",      hl.dsp.exec_cmd("pkill -x wayvibes"))
 
--- Soundboard
-hl.bind(mainMod .. " + SHIFT + D",
-  hl.dsp.exec_cmd("pw-play --volume 0.7 --target SOUNDBOARDSINK ~/Downloads/cinematicboom.mp3")
-)
-hl.bind(mainMod .. " + SHIFT + G",
-  hl.dsp.exec_cmd("pw-play --volume 0.2 --target SOUNDBOARDSINK ~/Downloads/vine-boom.mp3")
-)
-
 -- Quick access (config files)
 hl.bind(mainMod .. " + H",                     hl.dsp.exec_cmd("code ~/.config/hypr/"))
 hl.bind(mainMod .. " + N",                     hl.dsp.exec_cmd(terminal .. " nvim ~/.config/nvim/init.lua"))
@@ -351,6 +343,7 @@ hl.window_rule({ match = { initial_class = "[Tt]hunar" },                    opa
 hl.window_rule({ match = { initial_class = "org.pulseaudio.pavucontrol" },   opacity = "1 0.8" })
 hl.window_rule({ match = { class = "kitty" },                                opacity = "0.8 0.6" })
 hl.window_rule({ match = { class = "floating-kitty" },                       opacity = "0.8 0.6" })
+hl.window_rule({ match = { class = "recorder-auth" },                        float = true, center = true, size = { 675, 215 }, opacity = "1 0.8" })
 
 -- Floating terminal (cursor-centered + persistent size)
 hl.window_rule({
@@ -495,7 +488,7 @@ hl.on("window.open", function(w)
     if win.class == "com.obsproject.Studio" then
       hl.timer(function()
         hl.exec_cmd("~/.config/hypr/scripts/pogo-sink-switch.sh")
-      end, { timeout = 10000, type = "oneshot" })
+      end, { timeout = 12000, type = "oneshot" })
       return
     end
   end
