@@ -67,6 +67,7 @@ hl.monitor({
 
 hl.workspace_rule({ workspace = "1", monitor = leftMonitor })
 hl.workspace_rule({ workspace = "2", monitor = rightMonitor })
+hl.workspace_rule({ workspace = "3", monitor = rightMonitor })
 hl.workspace_rule({ workspace = "8", monitor = rightMonitor })
 
 
@@ -473,7 +474,7 @@ hl.window_rule({ match = { class = "streamer.bot.exe", title = "Add Action" }, f
 
 -- Telegram
 hl.window_rule({ match = { initial_class = "org.telegram.desktop" },                                 float = true, size = { 635, 802 } })
-hl.window_rule({ match = { initial_class = "org.telegram.desktop", initial_title = "Media viewer" }, float = true, size = { 850, 850 } })
+hl.window_rule({ match = { initial_class = "org.telegram.desktop", initial_title = "Media viewer" }, float = true, size = { 850, 850 }, fullscreen_state = 0 })
 hl.window_rule({ match = { initial_class = "org.telegram.desktop", initial_title = "Save Image" },   float = true, center = true, size = { 750, 550 } })
 
 
