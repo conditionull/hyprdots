@@ -75,6 +75,7 @@ hl.workspace_rule({ workspace = "8", monitor = rightMonitor })
 ---- AUTOSTART ----
 -------------------
 hl.on("hyprland.start", function()
+  hl.exec_cmd("dbus-update-activation-environment --systemd --all && systemctl --user start hyprland-session.target")
   hl.exec_cmd("waybar -c ~/.config/waybar/config_dock.jsonc -s ~/.config/waybar/dock.css")
   hl.exec_cmd("awww-daemon & mako & vicinae server")
   hl.exec_cmd("systemctl --user start hyprpolkitagent")
@@ -86,6 +87,10 @@ hl.on("hyprland.start", function()
   hl.exec_cmd("wl-clip-persist --clipboard regular")
   hl.exec_cmd("wl-paste --type text --watch cliphist store")
   hl.exec_cmd("wl-paste --type image --watch cliphist store")
+end)
+
+hl.on("hyprland.shutdown", function()
+    hl.exec_cmd("systemctl --user stop hyprland-session.target")
 end)
 
 
