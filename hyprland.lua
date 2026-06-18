@@ -106,6 +106,9 @@ hl.config({
   binds = {
     allow_workspace_cycles = true,
   },
+  cursor = {
+    no_warps = true,
+  }
 })
 
 
@@ -243,6 +246,13 @@ hl.bind(mainMod .. " + D",               hl.dsp.exec_cmd("wayscriber --daemon-to
 -- Browser
 hl.bind(mainMod .. " + Y",               hl.dsp.exec_cmd("firefox --new-tab https://www.youtube.com/"))
 hl.bind(mainMod .. " + T",               hl.dsp.exec_cmd("firefox --new-tab https://www.twitch.tv/"))
+hl.bind(
+    mainMod .. " + SHIFT + T",
+    hl.dsp.exec_cmd(
+        'bash -c "source ~/.config/hypr/env.sh; firefox --new-window \'https://dashboard.twitch.tv/popout/u/'
+        .. private.twitch_name .. '/stream-manager/activity-feed?uuid=' .. private.twitch_uuid .. '\'"'
+    )
+)
 
 hl.bind(mainMod .. " + G",               hl.dsp.exec_cmd("firefox --new-tab https://www.github.com/"))
 
@@ -459,6 +469,7 @@ hl.window_rule({ match = { initial_class = "Minecraft.*" },                     
 hl.window_rule({ match = { initial_class = "code-oss" },                        maximize = true })
 
 -- Steam
+hl.window_rule({ match = { initial_class = "steam", initial_title = "Steam" },              monitor = leftMonitor })
 hl.window_rule({ match = { initial_class = "steam_app_.*" },                                monitor = leftMonitor, fullscreen = true })
 hl.window_rule({ match = { initial_title = "VTube Studio" },                                monitor = rightMonitor, workspace = "5 silent", fullscreen = true })
 hl.window_rule({ match = { initial_title = "Steam",          initial_class = "steam" },     tile = true })
@@ -470,6 +481,11 @@ hl.window_rule({ match = { initial_title = "Shutdown",       initial_class = "st
 hl.window_rule({ match = { initial_title = "Special Offers", initial_class = "steam" },     center = true })
 hl.window_rule({ match = { initial_title = "Add Non-Steam Game", initial_class = "steam" }, float = true, center = true, size = { 700, 650 } })
 
+-- Trackmania/Ubisoft connect
+hl.window_rule({ match = { initial_title = "Ubisoft Connect" },     monitor = leftMonitor, workspace = "4 silent", fullscreen = true })
+hl.window_rule({ match = { initial_title = "Trackmania" },          monitor = leftMonitor, workspace = "4 silent", fullscreen = true })
+
+
 -- Spotify
 hl.window_rule({ match = { initial_class = "[Ss]potify" }, monitor = rightMonitor, workspace = "9 silent" })
 
@@ -478,9 +494,8 @@ hl.window_rule({ match = { initial_title = "Streamer.bot.*" },                 w
 hl.window_rule({ match = { class = "streamer.bot.exe", title = "Add Action" }, fullscreen = false })
 
 -- Telegram
-hl.window_rule({ match = { initial_class = "org.telegram.desktop" },                                 float = true, size = { 635, 802 } })
-hl.window_rule({ match = { initial_class = "org.telegram.desktop", initial_title = "Media viewer" }, float = true, size = { 850, 850 }, fullscreen_state = 0 })
-hl.window_rule({ match = { initial_class = "org.telegram.desktop", initial_title = "Save Image" },   float = true, center = true, size = { 750, 550 } })
+-- hl.window_rule({ match = { initial_class = "org.telegram.desktop" },                                 float = true, size = { 635, 802 } })
+-- hl.window_rule({ match = { initial_class = "org.telegram.desktop", initial_title = "Save Image" },   float = true, center = true, size = { 750, 550 } })
 
 
 --------------------
