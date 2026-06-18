@@ -105,9 +105,6 @@ hl.config({
   },
   binds = {
     allow_workspace_cycles = true,
-  },
-  cursor = {
-    no_warps = true,
   }
 })
 
